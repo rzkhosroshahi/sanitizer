@@ -8,7 +8,8 @@ import { sanitizer } from 'sanitizer';
 const data = { 'one_key': 'foo', 'two_key': 'foo' };
 sanitizer(data); // { oneKey: 'foo', twoKey: 'foo', }
 ```
-## Set manually how far getting deep to convert keys with `deep` argument
+## Deep
+Set manually how far getting deep to convert keys with `deep` argument
 *Default deep argument is zero*
 
 ``` javascript
@@ -19,7 +20,8 @@ const data = {
 sanitizer(data, 2); // { thirdKey: { oneKey: 'foo', twoKey: 'foo' }, }
 ```
 
-## Set convertsArray argument that tells to sanitizer do you want to convert array objects key or not
+## convertsArray
+Set `convertsArray` argument that tells to sanitizer do you want to convert array objects key or not
 *Default convertsArray argument is true*
 
 ``` javascript
