@@ -16,7 +16,7 @@ export const toCamelCase = (key) => {
 export const sanitizer = (data, deep = 0, convertArray = true) => {
     let level = deep > 0 ? 0 : deep;
 
-    if (data && data.length) {
+    if (Array.isArray(data)) {
         return santitizeArray(data, level);
     }
 
@@ -24,7 +24,7 @@ export const sanitizer = (data, deep = 0, convertArray = true) => {
         return Object.keys(data).reduce((acc, key) => {
             const santitzedKey = camelCase ? toCamelCase(key) : key;
             // data is an array
-            if (data[key] && data[key].map) {
+            if (Array.isArray(data[key])) {
                 acc[santitzedKey] = santitizeArray(data[key], level, convertArray);
                 return acc;
             }
