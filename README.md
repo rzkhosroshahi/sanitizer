@@ -1,4 +1,5 @@
-# Converts Object with snake_case propty to camelCase proprty
+# Sanitizer
+Converts Object with snake_case propty to camelCase proprty
 
 ## Usage
 
