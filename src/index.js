@@ -8,6 +8,14 @@ export const toCamelCase = (key) => {
 };
 
 /**
+ * @param {*} obj 
+ * @Returns if a obj is an object
+ */
+export const isObject = (value) => {
+    return value && typeof value === 'object' && value.constructor === Object;
+};
+
+/**
  * Converts Object with snake_case propty to camelCase proprty
  * @param {Object} data
  * @param {Object} options
@@ -38,7 +46,7 @@ export const sanitizer = (data, options = {
                     return acc;
                 }
                 // nested object
-                if (typeof data[key] === 'object' && (deep > level || infinite)) {
+                if (isObject(data[key]) && (deep > level || infinite)) {
                     level = level + 1;
                     acc[santitzedKey] = santitizeObject(data[key], level);
                     return acc;
