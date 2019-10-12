@@ -21,7 +21,7 @@ describe("sanitizer", () => {
                 twoKey: 'foo'
             },
         };
-        expect(sanitizer(data, 1)).toStrictEqual(expectedData);
+        expect(sanitizer(data, { deep: 1 })).toStrictEqual(expectedData);
     });
 
     it("level 0 ", () => {
@@ -38,7 +38,7 @@ describe("sanitizer", () => {
                 'two_key': 'foo'
             },
         };
-        expect(sanitizer(data, 0)).toStrictEqual(expectedData);
+        expect(sanitizer(data, { deep: 0 })).toStrictEqual(expectedData);
     });
 
     it("level 2", () => {
@@ -74,7 +74,7 @@ describe("sanitizer", () => {
                 },
             },
         };
-        expect(sanitizer(data, 2)).toStrictEqual(expectedData);
+        expect(sanitizer(data, { deep: 2 })).toStrictEqual(expectedData);
     });
 
     it("array data ", () => {
@@ -99,7 +99,7 @@ describe("sanitizer", () => {
                 ffKey: 'foo',
             },
         ];
-        expect(sanitizer(data, 1)).toStrictEqual(expectedData);
+        expect(sanitizer(data, { deep: 1 })).toStrictEqual(expectedData);
     });
 
     it("data has array of objects", () => {
@@ -116,7 +116,7 @@ describe("sanitizer", () => {
                 twoKey: 'foo'
             }],
         };
-        expect(sanitizer(data, 1, true)).toStrictEqual(expectedData);
+        expect(sanitizer(data, { deep: 1, convertArray: true })).toStrictEqual(expectedData);
     });
 
     it("data has array of objects but array should not to convert", () => {
@@ -133,6 +133,6 @@ describe("sanitizer", () => {
                 'two_key': 'foo'
             }],
         };
-        expect(sanitizer(data, 1, false)).toStrictEqual(expectedData);
+        expect(sanitizer(data, { deep: 1, convertArray: false })).toStrictEqual(expectedData);
     });
 });
